@@ -1,11 +1,20 @@
 package com.sec.models;
 
-public class UserDetails {
-    private  String username;
-    private  String password;
-    private  String email;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    public UserDetails(String username, String password, String email) {
+@Entity
+public class UserDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userId;
+    private String username;
+    private String password;
+    private String email;
+
+    public UserDetails(Integer userId, String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -21,6 +30,14 @@ public class UserDetails {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {
